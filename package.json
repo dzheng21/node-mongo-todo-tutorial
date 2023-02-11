@@ -1,0 +1,29 @@
+{
+  "name": "node-mongo-todo-app",
+  "version": "1.0.0",
+  "description": "simple todo app built with node and mongo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzheng21/node-mongo-todo-tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dzheng21/node-mongo-todo-tutorial/issues"
+  },
+  "homepage": "https://github.com/dzheng21/node-mongo-todo-tutorial#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
