@@ -1,3 +1,4 @@
+// SHARED: INTEGRATED LIBRARY HELPS REUSE HELPFUL MODULES
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -6,6 +7,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // models
+// UNIQUE: MONGODB SCHEMAS ENFORCE TYPES AND VARIABLES FOR DATA
 const TodoTask = require("./models/TodoTask");
 
 app.use("/static", express.static("public"));
@@ -15,6 +17,7 @@ app.set("views", path.join(__dirname, "views"));
 
 const mongoose = require("mongoose");
 // connection to db
+// UNIQUE: CLOUD CLUSTER -- MONGODB CAN CONNECT TO CLOUD CLUSTER FOR DATA STORE
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, (err) => {
   if (err) return console.error(err);
   console.log("Connected to db!");
@@ -22,7 +25,9 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, (err) => {
 });
 
 // GET METHOD
+// SHARED — ROUTES DIRECT USERS TOWARDS SPECIFIC METHODS THAT EXECUTE LOGIC
 app.get("/", (req, res) => {
+  // UNIQUE: QUERIES ENABLE MONGODB TO SEARCH FOR SPECIFIC DATA ENTRIES
   TodoTask.find({}, (err, tasks) => {
     res.render("todo.ejs", { todoTasks: tasks });
   });
@@ -54,7 +59,7 @@ app
       res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
     });
   })
-  .post((req, res) => {
+  .post((req, res) => {         // SHARED: RESPONSES ENCAPSULATE REQUEST RESULTS
     const id = req.params.id;
     TodoTask.findByIdAndUpdate(id, { content: req.body.content }, (err) => {
       if (err) return res.send(500, err);
